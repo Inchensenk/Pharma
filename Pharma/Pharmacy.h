@@ -12,28 +12,38 @@ using namespace std;
 class Pharmacy
 {
 private:
-	//порядковый номер лекарства 
+	//Порядковый номер лекарства 
 	vector<int> id;
-	//наименование лекарства
+
+	//Наименование лекарства
 	vector<string> name;
+
 	//Лекарственная форма лекарства
 	vector<string> type;
+
 	//Производитель лекарства
 	vector<string> maker;
+
 	//Стоимость лекарства
 	vector<double> price;
+
 	//Колличество штук
 	vector<int> amount;
 
 	int nextid = 0;
+
 	//Имя файла, в который сохраняются данные
 	string filename = "data.txt";
+
 	//Кол-во столбцов таблицы
 	static const int numcol = 6;
+
 	//Массив имен-заголовков столбцов таблицы
 	const string columns[numcol] = { "ID", "Название", "Тип", "Производитель", "Цена", "Кол-во" };
+
 	//Переменная влияющая на размер таблицы (кол-во отступов для выравнивания по середине содержимого ячейки)
 	static const int vertical = 9;
+
 	//Разделяющая линия строк таблицы
 	string horizontal = string(vertical * 2 * numcol - (vertical % 2 == 0 ? vertical / 2 - 1 : vertical / 2), '-');
 
@@ -62,11 +72,11 @@ private:
 	//Сортировка по стобцу и ключу и вывод
 	void PrintSort(string column, bool asc = true);
 	
-	void SortTable(vector<string> v, bool asc = true);
+	void SortTable(vector<string>& v, bool asc = true);
 	
-	void SortTable(vector<double> v, bool asc = true);
+	void SortTable(vector<double>& v, bool asc = true);
 	
-	void SortTable(vector<int> v, bool asc = true);
+	void SortTable(vector<int>& v, bool asc = true);
 	
 	//Добавление новой записи в конец
 	void Create(string name, string type, string maker, double price, int amount);

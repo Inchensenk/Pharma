@@ -1,5 +1,6 @@
 #include "Pharmacy.h"
 
+//Создание заголовка и структуры таблицы
 void Pharmacy::CreateTable()
 {
 	system("cls");
@@ -10,7 +11,7 @@ void Pharmacy::CreateTable()
 		cout << "|" << setw(vertical + columns[i].length() / 2) << columns[i] << setw(vertical - columns[i].length() / 2) << "|";
 	cout << endl << horizontal << endl;
 }
-
+//Сохранение таблицы в файл
 void Pharmacy::SaveTxt()
 {
 	ofstream out = WriteOpen();
@@ -30,6 +31,7 @@ void Pharmacy::SaveTxt()
 	out.close();
 }
 
+//Вывод таблицы в консоль
 void Pharmacy::Print()
 {
 	CreateTable();
@@ -46,7 +48,7 @@ void Pharmacy::Print()
 		cout << endl << horizontal << endl;
 	}
 }
-
+//Вывод найденной позиции
 int Pharmacy::PrintFind(string column, string key)
 {
 	CreateTable();
@@ -76,7 +78,7 @@ int Pharmacy::PrintFind(string column, string key)
 	}
 	return countfind;
 }
-
+//Вывод найденной позиции
 int Pharmacy::PrintFind(string column, double key)
 {
 	CreateTable();
@@ -100,7 +102,7 @@ int Pharmacy::PrintFind(string column, double key)
 	}
 	return countfind;
 }
-
+//Вывод найденной позиции
 int Pharmacy::PrintFind(string column, int key)
 {
 	CreateTable();
@@ -123,7 +125,7 @@ int Pharmacy::PrintFind(string column, int key)
 	}
 	return countfind;
 }
-
+//Вывод отфильтрованной таблицы
 int Pharmacy::PrintFilt(string column, string key)
 {
 	CreateTable();
@@ -198,6 +200,7 @@ int Pharmacy::PrintFilt(string column, int key)
 	return countfilt;
 }
 
+//Вывод отсортированной таблицы
 void Pharmacy::PrintSort(string column, bool asc)
 {
 	CreateTable();
@@ -245,6 +248,7 @@ void Pharmacy::PrintSort(string column, bool asc)
 	}
 }
 
+//Сортировка таблицы 
 void Pharmacy::SortTable(vector<string>& v, bool asc)
 {
 	int n = v.size();
@@ -362,6 +366,7 @@ void Pharmacy::SortTable(vector<int>& v, bool asc)
 		}
 }
 
+//Добавление новой позиции в конец с автоматической выдачей id
 void Pharmacy::Create(string name, string type, string maker, double price, int amount)
 {
 	this->id.push_back(nextid++);
@@ -373,6 +378,7 @@ void Pharmacy::Create(string name, string type, string maker, double price, int 
 	SaveTxt();
 }
 
+//При считывании с файла записывает в таблицу с id из файла
 void Pharmacy::Create(int id, string name, string type, string maker, double price, int amount)
 {
 	this->id.push_back(id);
@@ -384,6 +390,7 @@ void Pharmacy::Create(int id, string name, string type, string maker, double pri
 	SaveTxt();
 }
 
+//Удаление позиции по id
 void Pharmacy::Delete(int id)
 {
 	for (size_t i = 0; i < nextid; i++)
@@ -401,7 +408,7 @@ void Pharmacy::Delete(int id)
 	}
 	SaveTxt();
 }
-
+//Обновляет указанную позицию в таблице
 void Pharmacy::Update(int id, string name, string type, string maker, double price, int amount)
 {
 	for (size_t i = 0; i < nextid; i++)
@@ -484,6 +491,7 @@ void Pharmacy::ReadFile()
 	in.close();
 }
 
+//Конструктор по умолчанию
 Pharmacy::Pharmacy()
 {
 	this->id.push_back(this->name.size());
@@ -494,12 +502,14 @@ Pharmacy::Pharmacy()
 	this->amount.push_back(0);
 }
 
+//Конструктор инициализирующий таблицу при считывании из файла
 Pharmacy::Pharmacy(string filename)
 {
 	this->filename = filename;
 	ReadFile();
 }
 
+//Конструктор инициализирующий первый элемент из таблицы с автоматически выданным id
 Pharmacy::Pharmacy(string name, string type, string maker, double price, int amount)
 {
 	this->id.push_back(this->name.size());
@@ -510,6 +520,7 @@ Pharmacy::Pharmacy(string name, string type, string maker, double price, int amo
 	this->amount.push_back(amount);
 }
 
+//Конструктор инициализирующий первый элемент из таблицы с указанным id
 Pharmacy::Pharmacy(int id, string name, string type, string maker, double price, int amount)
 {
 	this->id.push_back(id);
@@ -519,7 +530,7 @@ Pharmacy::Pharmacy(int id, string name, string type, string maker, double price,
 	this->price.push_back(price);
 	this->amount.push_back(amount);
 }
-
+//Меню
 void Pharmacy::menu()
 {
 	bool showGeneralPrint = true;
