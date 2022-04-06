@@ -245,7 +245,7 @@ void Pharmacy::PrintSort(string column, bool asc)
 	}
 }
 
-void Pharmacy::SortTable(vector<string> v, bool asc)
+void Pharmacy::SortTable(vector<string>& v, bool asc)
 {
 	int n = v.size();
 	string tname = "", ttype = "", tmaker = "";
@@ -284,7 +284,7 @@ void Pharmacy::SortTable(vector<string> v, bool asc)
 		}
 }
 
-void Pharmacy::SortTable(vector<double> v, bool asc)
+void Pharmacy::SortTable(vector<double>& v, bool asc)
 {
 	int n = v.size();
 	string tname = "", ttype = "", tmaker = "";
@@ -323,7 +323,7 @@ void Pharmacy::SortTable(vector<double> v, bool asc)
 		}
 }
 
-void Pharmacy::SortTable(vector<int> v, bool asc)
+void Pharmacy::SortTable(vector<int>& v, bool asc)
 {
 	int n = v.size();
 	string tname = "", ttype = "", tmaker = "";

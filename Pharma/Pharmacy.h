@@ -12,11 +12,17 @@ using namespace std;
 class Pharmacy
 {
 private:
+	//порядковый номер лекарства 
 	vector<int> id;
+	//наименование лекарства
 	vector<string> name;
+	//Лекарственная форма лекарства
 	vector<string> type;
+	//Производитель лекарства
 	vector<string> maker;
+	//Стоимость лекарства
 	vector<double> price;
+	//Колличество штук
 	vector<int> amount;
 
 	int nextid = 0;
